@@ -2,11 +2,11 @@ const User = require("../models/user");
 const passport = require('passport');
 
 module.exports.getSignin = (req, res) => {
-  res.render("signin", { title: "Signin" });
+  res.render("auth/signin", { title: "Signin" });
 };
 
 module.exports.getSignup = (req, res) => {
-  res.render("signup", { title: "Signup" });
+  res.render("auth/signup", { title: "Signup" });
 };
 
 module.exports.signin = passport.authenticate('local', {
@@ -20,7 +20,7 @@ module.exports.signup = async (req, res) => {
   const user = await User.findOne({ email });
   try {
     if (user) {
-      return res.render('signup', { 
+      return res.render('auth/signup', { 
         title: 'Signup',
         error: 'An account with this email is already exist!'
       });
