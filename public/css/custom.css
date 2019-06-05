@@ -1,0 +1,17 @@
+#footer {
+  padding: 20px;
+  background: #232323;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+#footer .heart {
+  color: #f00;
+  font-size: 18px;
+}
+#main {
+  padding-top: 50px;
+  height: 100vh;
+}
