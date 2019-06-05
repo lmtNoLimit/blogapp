@@ -3,7 +3,7 @@ const router = express.Router();
 const { getSignin, getSignup, signin, signup } = require('../controllers/auth');
 
 router.get('/', (req, res) => {
-  res.send('hello')
+  res.render('index', { title: 'Home' });
 });
 router.get('/signin', getSignin);
 router.get('/signup', getSignup);
