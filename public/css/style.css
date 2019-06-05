@@ -734,3 +734,16 @@ label.valid:after {
     margin-bottom: 10px;
   }
 }
+#footer {
+  padding: 20px;
+  background: #232323;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+#footer .heart {
+  color: #f00;
+  font-size: 18px;
+}
