@@ -43,6 +43,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// setup passport
+require('./config/passport')(app);
+
 // use routes
 app.use('/', indexRouter);
 
