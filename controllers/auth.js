@@ -35,3 +35,9 @@ module.exports.signup = async (req, res) => {
     res.redirect('/signup')
   }  
 };
+
+module.exports.logout = (req, res) => {
+  req.logout();
+  req.flash('success', 'You are now logged out');
+  res.redirect('/')
+}

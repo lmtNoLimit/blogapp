@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-// const passport = require('passport');
 const { isLoggedIn } = require('../middlewares/index');
+const { renderPostForm, createPost } = require('../controllers/post');
 
-router.get('/new', isLoggedIn, (req, res) => {
-  res.render('post/create', { title: 'New post' });
-});
+router.get('/new', isLoggedIn, renderPostForm);
+router.post("/new", isLoggedIn, createPost);
 
 module.exports = router;

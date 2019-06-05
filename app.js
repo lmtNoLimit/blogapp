@@ -38,14 +38,16 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
+// setup passport
+require('./config/passport')(app);
+
+// custom middleware
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.error = req.flash('error');
   res.locals.success = req.flash('success');
   next();
 });
-
-// setup passport
-require('./config/passport')(app);
 
 // use routes
 app.use('/', indexRouter);

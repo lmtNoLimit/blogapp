@@ -1,6 +1,6 @@
 #footer {
   padding: 20px;
-  background: #232323;
+  background: #343a40;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,6 +12,6 @@
   font-size: 18px;
 }
 #main {
-  padding-top: 50px;
-  height: 100vh;
+  padding: 50px;
+  border-radius: 0;
 }
