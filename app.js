@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 const indexRouter = require('./routes/index');
+const postRouter = require('./routes/post');
 
 dotenv.config();
 const app = express();
@@ -48,5 +49,6 @@ require('./config/passport')(app);
 
 // use routes
 app.use('/', indexRouter);
+app.use('/post', postRouter);
 
 module.exports = app;
