@@ -37,6 +37,34 @@ module.exports.getPost = async (req, res) => {
       post: post
     })
   } catch (error) {
-    
+    return res.redirect('/');
+  }
+}
+
+module.exports.renderEditForm = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    return res.render('post/edit', {
+      title: 'Edit post',
+      post: post
+    });
+  } catch (error) {
+    return res.redirect('/');
+  }
+}
+
+module.exports.editPost = async (req, res) => {
+  const { title, image, body } = req.body;
+  try {
+    const post = await Post.findById(req.params.id);
+    post.title = title;
+    post.image = image;
+    post.body = body;
+    await post.save();
+    return res.redirect(`/post/${req.params.id}`);
+  } catch (error) {
+    console.log(error);
+    req.flash('error', 'Something went wrong. Please try again');
+    return res.redirect('back');
   }
 }
