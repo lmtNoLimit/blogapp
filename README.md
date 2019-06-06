@@ -1,12 +1,13 @@
-# How to use
-## Clone or download this source code
-`git clone https://github.com/lmtNoLimit/codegym-blogapp.git` 
+# BlogApp 
+**Create your own blogger to share your blogs with your most loyal readers.**
 
-## cd to project directory and Install package
-`npm install`
+## Requirements
+* Node.js
 
-## Create .env file and config for PORT, MONGO_URI, SECRET
-`touch .env`
-
-## Test the app 
-`npm start` or `npm run dev` to run the app in dev mode
+## Get started
+1. Clone this project
+2. Install dependencies with `npm install` at the project root directory
+3. Create .env file and config for PORT, MONGO_URI, SECRET
+4. Start the development server with `npm run dev` or `npm start`
+5. Make changes
+6. Test your app
