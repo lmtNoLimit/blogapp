@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title"><a href="/" class="text-dark"><%= post.title %></a></h5>
+            <h5 class="card-title"><a href="/post/<%= post._id %>" class="text-dark"><%= post.title %></a></h5>
             <p class="card-text"><%= post.body.substring(0, 100) %></p>
             <p class="card-text"><small class="text-muted"><%= post.postedDate.toDateString() %></small></p>
           </div>

@@ -7,7 +7,7 @@ module.exports.renderPostForm = (req, res) => {
 module.exports.createPost = async (req, res) => {
   let { title, image, body } = req.body;
   if(image === "") {
-    image = "https://dummyimage.com/500x250/ddd/969696.jpg&text=<\/>"
+    image = "https://dummyimage.com/800x600/ddd/969696.jpg&text=<\/>"
   }
   try {
     const post = await new Post({ title, image, body, author: req.user._id });
@@ -28,3 +28,15 @@ module.exports.getPosts = async (req, res) => {
     posts: posts
   });
 };
+
+module.exports.getPost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    return res.render('post/preview', {
+      title: post.title,
+      post: post
+    })
+  } catch (error) {
+    
+  }
+}
