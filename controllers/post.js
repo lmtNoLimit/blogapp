@@ -7,7 +7,7 @@ module.exports.renderPostForm = (req, res) => {
 module.exports.createPost = async (req, res) => {
   let { title, image, body } = req.body;
   if(image === "") {
-    image = "https://dummyimage.com/800x600/ddd/969696.jpg&text=<\/>"
+    image = "https://res.cloudinary.com/lmtnolimit/image/upload/v1559820103/noimg_hfsfaq.png"
   }
   try {
     const post = await new Post({ title, image, body, author: req.user._id });
@@ -65,6 +65,17 @@ module.exports.editPost = async (req, res) => {
   } catch (error) {
     console.log(error);
     req.flash('error', 'Something went wrong. Please try again');
+    return res.redirect('back');
+  }
+};
+
+module.exports.deletePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    await post.delete();
+    return res.redirect('/');
+  } catch (error) {
+    req.flash('error', 'Something went wrong. Please try again!');
     return res.redirect('back');
   }
 }
