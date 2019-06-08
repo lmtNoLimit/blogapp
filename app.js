@@ -12,6 +12,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/index');
 const postRouter = require('./routes/post');
 const commentRouter = require('./routes/comment');
+const userRouter = require('./routes/user');
 
 dotenv.config();
 const app = express();
@@ -54,5 +55,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/post', postRouter);
 app.use('/post/:id/comments', commentRouter);
+app.use('/profile', userRouter)
 
 module.exports = app;

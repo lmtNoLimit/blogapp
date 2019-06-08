@@ -73,7 +73,7 @@ module.exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     await post.delete();
-    return res.redirect('/');
+    return res.redirect('back');
   } catch (error) {
     req.flash('error', 'Something went wrong. Please try again!');
     return res.redirect('back');
