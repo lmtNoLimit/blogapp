@@ -22,7 +22,7 @@ module.exports.createPost = async (req, res) => {
 };
 
 module.exports.getPosts = async (req, res) => {
-  const posts = await Post.find().sort({ postedDate: -1 });
+  const posts = await Post.find().sort({ postedDate: -1 }).populate('author');
   res.render('index', {
     title: 'Blog App',
     posts: posts
