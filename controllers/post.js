@@ -31,7 +31,7 @@ module.exports.getPosts = async (req, res) => {
 
 module.exports.getPost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id).populate('comments');
     return res.render('post/preview', {
       title: post.title,
       post: post
@@ -78,4 +78,4 @@ module.exports.deletePost = async (req, res) => {
     req.flash('error', 'Something went wrong. Please try again!');
     return res.redirect('back');
   }
-}
+};
