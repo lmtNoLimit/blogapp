@@ -360,7 +360,8 @@ figure {
   margin-bottom: 0px;
 }
 
-input {
+.signup-form input,
+.signin-form input {
   width: 100%;
   display: block;
   border: none;
@@ -370,43 +371,53 @@ input {
   box-sizing: border-box;
 }
 
-input::-webkit-input-placeholder {
+.signup-form input::-webkit-input-placeholder,
+.signin-form input::-webkit-input-placeholder {
   color: #999;
 }
 
-input::-moz-placeholder {
+.signup-form input::-moz-placeholder,
+.signin-form input::-moz-placeholder {
   color: #999;
 }
 
-input:-ms-input-placeholder {
+.signup-form input:-ms-input-placeholder,
+.signin-form input:-ms-input-placeholder {
   color: #999;
 }
 
-input:-moz-placeholder {
+.signup-form input:-moz-placeholder,
+.signin-form input:-moz-placeholder {
   color: #999;
 }
 
-input:focus {
+.signup-form input:focus,
+.signin-form input:focus {
   border-bottom: 1px solid #222;
 }
 
-input:focus::-webkit-input-placeholder {
+.signup-form input:focus::-webkit-input-placeholder,
+.signin-form input:focus::-webkit-input-placeholder {
   color: #222;
 }
 
-input:focus::-moz-placeholder {
+.signup-form input:focus::-moz-placeholder,
+.signin-form input:focus::-moz-placeholder {
   color: #222;
 }
 
-input:focus:-ms-input-placeholder {
+.signup-form input:focus:-ms-input-placeholder,
+.signin-form input:focus:-ms-input-placeholder {
   color: #222;
 }
 
-input:focus:-moz-placeholder {
+.signup-form input:focus:-moz-placeholder,
+.signin-form input:focus:-moz-placeholder {
   color: #222;
 }
 
-label {
+.signup-form label,
+.signin-form label {
   position: absolute;
   left: 0;
   top: 50%;
@@ -470,7 +481,6 @@ label {
     margin-left: 0px;
     margin-right: 0px;
     padding-left: 0px;
-    /* box-sizing: border-box; */
     padding: 0 30px;
   }
 
