@@ -1,9 +1,10 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -13,7 +14,6 @@ const postRouter = require('./routes/post');
 const commentRouter = require('./routes/comment');
 const userRouter = require('./routes/user');
 
-dotenv.config();
 const app = express();
 
 //db

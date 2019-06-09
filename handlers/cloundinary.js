@@ -1,11 +1,10 @@
 const multer = require('multer');
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
-cloudinary.config({
-  cloud_name: 'lmtnolimit',
-  api_key: '869128828138772',
-  api_secret: 'WVuBpZSx34qEP-TdjSgjO-GeNHo'
-});
+const cloud_name = process.env.CLOUD_NAME;
+const api_key = process.env.API_KEY;
+const api_secret = process.env.API_SECRET;
+cloudinary.config({ cloud_name, api_key, api_secret });
 const storage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: "blog-image",
