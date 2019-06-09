@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 <div id="main" class="container">
   <% posts.forEach(post => { %>
-  <div class="card mb-5 position-relative">
+  <div class="card mb-3 position-relative">
     <% if(currentUser && post.author.equals(currentUser._id)) { %>
     <div class="dropdown show position-absolute">
       <button class="btn btn-muted dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -16,7 +16,7 @@
     </div>
     <% } %>
     <div class="card-body">
-      <h3 class="card-title"><%= post.title %></h3>
+      <h4 class="card-title"><a class="text-dark" href="/post/<%= post._id %>"><%= post.title %></a></h4>
       <img src="<%= post.image %>" class="card-img-top">
       <p class="card-text"><small class="text-muted"><%= post.postedDate %></small></p>
       <p class="card-text"><%= post.body %></p>

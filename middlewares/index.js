@@ -17,7 +17,6 @@ exports.isOwnerPost = async (req, res, next) => {
         req.flash("error", "Post not found!");
         return res.redirect("back");
       } else {
-        console.log(post.author.equals(req.user._id));
         if (post.author.equals(req.user._id)) {
           next();
         } else {

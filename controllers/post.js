@@ -6,8 +6,10 @@ module.exports.renderPostForm = (req, res) => {
 
 module.exports.createPost = async (req, res) => {
   let { title, image, body } = req.body;
-  if(image === "") {
-    image = "https://res.cloudinary.com/lmtnolimit/image/upload/v1559820103/noimg_hfsfaq.png"
+  if(!req.file) {
+    image = "";
+  } else {
+    image = req.file.url
   }
   try {
     const post = await new Post({ title, image, body, author: req.user._id });
@@ -54,11 +56,10 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.editPost = async (req, res) => {
-  const { title, image, body } = req.body;
+  const { title, body } = req.body;
   try {
     const post = await Post.findById(req.params.id);
     post.title = title;
-    post.image = image;
     post.body = body;
     await post.save();
     return res.redirect(`/post/${req.params.id}`);

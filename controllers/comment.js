@@ -9,7 +9,7 @@ module.exports.addComment = async (req, res) => {
       text,
       author: {
         id: req.user._id,
-        name: req.user.username
+        name: req.user.name
       }
     });
     await comment.save();
