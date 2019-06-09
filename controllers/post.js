@@ -80,3 +80,13 @@ module.exports.deletePost = async (req, res) => {
     return res.redirect('back');
   }
 };
+
+module.exports.searchPosts = async (req, res) => {
+  const posts = await Post.find();
+  let q = req.query.q.toLowerCase();
+  let matched = posts.filter(post => post.title.toLowerCase().indexOf(q) !== -1 || post.body.toLowerCase().indexOf(q) !== -1);
+  res.render('index', {
+    title: 'Blog App',
+    posts: matched,
+  })
+}

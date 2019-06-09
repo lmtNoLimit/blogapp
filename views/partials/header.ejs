@@ -6,22 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/custom.css">
   <link rel="stylesheet" href="/fonts/material-icon/css/material-design-iconic-font.min.css">
   <title><%= title %></title>
 </head>
 
-<body>
-  <% include navbar %>
-  <% if(error && error.length) { %>
-    <div class="alert alert-danger" role="alert">
-      <%= error %>
+<body class="mt-5">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/"><img src="/images/logo.png" width="130px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="form-inline my-2 my-lg-0" action="/search">
+      <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <% if(!currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/signin">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign up</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/post/new">+ New post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/<%= currentUser._id %>"><%= currentUser.name %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <% } %>
+      </ul>
     </div>
+  </nav>
+  <% if(error && error.length) { %>
+  <div class="alert alert-danger" role="alert">
+    <%= error %>
+  </div>
   <% } %>
   <% if(success && success.length) { %>
-    <div class="alert alert-success" role="alert">
-      <%= success %>
-    </div>
+  <div class="alert alert-success" role="alert">
+    <%= success %>
+  </div>
   <% } %>
