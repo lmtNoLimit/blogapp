@@ -16,3 +16,15 @@ module.exports.getProfile = async (req, res) => {
     return res.redirect('back');
   }
 };
+
+module.exports.searchPosts = async (req, res) => {
+  const posts = await Post.find().populate('author');
+  const user = await User.findById(req.params.userId);
+  const name = user.name;
+  const postsByUser = posts.filter(post => post.author._id.equals(req.params.userId));
+  let matched = postsByUser.filter(post => post.title.toLowerCase().indexOf(q) !== -1 || post.body.toLowerCase().indexOf(q) !== -1);
+  res.render('index', {
+    title: name,
+    posts: matched,
+  });
+}
