@@ -9,7 +9,6 @@ const postSchema = new mongoose.Schema({
   },
   body: {
     type: String,
-    required: true
   },
   postedDate: {
     type: Date,
@@ -18,6 +17,9 @@ const postSchema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+  tags: {
+    type: String
   },
   comments: [
     {

@@ -5,14 +5,14 @@ module.exports.renderPostForm = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  let { title, image, body } = req.body;
+  let { title, image, body, tags } = req.body;
   if(!req.file) {
     image = "";
   } else {
     image = req.file.url
   }
   try {
-    const post = await new Post({ title, image, body, author: req.user._id });
+    const post = await new Post({ title, image, body, tags, author: req.user._id });
     await post.save();
     return res.redirect("/");
   } catch (error) {
@@ -56,11 +56,12 @@ module.exports.renderEditForm = async (req, res) => {
 }
 
 module.exports.editPost = async (req, res) => {
-  const { title, body } = req.body;
+  const { title, body, tags } = req.body;
   try {
     const post = await Post.findById(req.params.id);
     post.title = title;
     post.body = body;
+    post.tags = tags;
     await post.save();
     return res.redirect(`/post/${req.params.id}`);
   } catch (error) {
@@ -84,9 +85,10 @@ module.exports.deletePost = async (req, res) => {
 module.exports.searchPosts = async (req, res) => {
   const posts = await Post.find();
   let q = req.query.q.toLowerCase();
-  let matched = posts.filter(post => post.title.toLowerCase().indexOf(q) !== -1 || post.body.toLowerCase().indexOf(q) !== -1);
+  let matched = posts.filter(post => post.title.toLowerCase().indexOf(q) !== -1 || post.body.toLowerCase().indexOf(q) !== -1 || post.tags.toLowerCase().indexOf(q) !== -1);
+  console.log(matched);
   res.render('index', {
     title: 'Blog App',
     posts: matched,
-  })
+  });
 }
