@@ -19,6 +19,7 @@
       <p class="card-text"><small class="text-muted"><%= post.postedDate %></small></p>
       <p class="card-text"><%= post.body %></p>
       <img src="<%= post.image %>" class="card-img-top">
+      <p class="card-text"><small class="text-muted">Tags: <%= post.tags %></small></p>
     </div>
   </div>
   <form action="/post/<%= post._id %>/comments" method="POST" class="mb-5">
