@@ -19,16 +19,18 @@
       <p class="card-text"><small class="text-muted"><%= post.postedDate %></small></p>
       <p class="card-text"><%= post.body %></p>
       <img src="<%= post.image %>" class="card-img-top">
-      <p class="card-text"><small class="text-muted">Tags: 
-        <% post.tags.split(',').forEach((tag, index, tags) => { %>
-          <a class="text-muted" href="/search?q=<%= tag %>">
-            <%= tag %>
-          </a>
-          <% if(index < tags.length - 1) { %>
-            ,
-          <% } %>
-        <% }); %>
-      </small></p>
+      <% if(post.tags) { %>
+        <p class="card-text"><small class="text-muted">Tags: 
+          <% post.tags.split(',').forEach((tag, index, tags) => { %>
+            <a class="text-muted" href="/search?q=<%= tag %>">
+              <%= tag %>
+            </a>
+            <% if(index < tags.length - 1) { %>
+              ,
+            <% } %>
+          <% }); %>
+        </small></p>
+      <% } %>
     </div>
   </div>
   <form action="/post/<%= post._id %>/comments" method="POST" class="mb-5">
