@@ -22,7 +22,7 @@
 }
 
 .member .avatar {
-  width: 250px;
+  flex-basis: 250px;
   height: 250px;
   border-radius: 50%;
   margin-right: 70px;
