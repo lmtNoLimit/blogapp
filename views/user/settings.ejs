@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+<div id="main" class="container">
+  <h2>Account Information</h2>
+  <form method="POST" action="/profile/<%= user._id %>/edit">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" value="<%= user.name %>"/>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" value="<%= user.email %>"/>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone number</label>
+      <input type="tel" name="phone" class="form-control" id="phone" placeholder="Phone number" value="<%= user.phone %>"/>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-info">Save changes</button>
+    </div>
+  </form>
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
+    Delete account
+  </button>
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Warning</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure want to remove your account? This will delete all of your posts and comments!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="/profile/<%= user._id %>/settings" method="POST">
+            <button class="btn btn-danger">Yes, delete my account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% include ../partials/footer %>

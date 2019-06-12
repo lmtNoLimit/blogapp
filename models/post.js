@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   image: {
     type: String
   },
   body: {
     type: String,
+    trim: true
   },
   postedDate: {
     type: Date,
@@ -19,7 +21,8 @@ const postSchema = new mongoose.Schema({
     ref: "User"
   },
   tags: {
-    type: String
+    type: String,
+    trim: true
   },
   comments: [
     {
