@@ -1,4 +1,7 @@
 <% include ../partials/header %>
+<% if (posts.length === 0) { %>
+<img src="/images/blank.jpg" alt="blank">
+<% } else { %>
 <div id="main" class="container">
   <% posts.forEach(post => { %>
   <div class="card mb-3 position-relative">
@@ -24,4 +27,5 @@
   </div>
   <% }); %>
 </div>
+<% } %>
 <% include ../partials/footer %>
